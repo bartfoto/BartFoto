@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio Bartosza Tyszko</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css">
+</head>
+<body>
+  <header>
+    <img src="img/logo.png" alt="Logo Bartosza Tyszko">
+   
+<nav>
+  <ul class="menu">
+    <li><a href="index.html">Strona główna</a></li>
+    <li><a href="sport.html">Sport</a></li>
+    <li><a href="motoryzacja.html">Motoryzacja</a></li>
+   <li><a href="studyjne.html">Studyjne</a></li>
+    <li><a href="slubne.html">Ślubne</a></li>
+    <li><a href="produktowe.html">Produktowe</a></li>
+  </ul>
+</nav>
+
+  </header>
+
+  <main>
+
+<p> Cześć, nazywam się Bartosz Tyszko. </p>
+<p> Jestem fotografem z Warszawy i specjalizuję się w fotografii: sportowej, motoryzacyjnej, studyjnej, fashion. </p>
+<p> Nie boję się też innego rodzaju fotografii jak np. ślubna, lubię też wieczory panieńskie i różnego rodzaju osiemnastki. </p>
+<p> Zawodowo pracuję z agencją SOPA Images -więc chyba nie jestem z pierwszej lepszej łapanki. </p>
+
+
+    <section class="gallery">
+      <a href="img/omnie1.jpg" data-lightbox="portfolio" data-title="Opis zdjęcia 1">
+        <div class="image-container">
+          <img src="img/omnie1.jpg" alt="Zdjęcie 1">
+          <div class="caption">Yeah, that's me.</div>
+        </div>
+      </a>
+<p> Jak coś robię - no właśnie, to do końca. </p>
+
+<a href="img/omnie2.jpg" data-lightbox="portfolio" data-title="Opis zdjęcia 1">
+        <div class="image-container">
+          <img src="img/omnie2.jpg" alt="Zdjęcie 1">
+          <div class="caption">Yeah, that's me.</div>
+        </div>
+      </a>
+
+<p> A nie dość, że do końca to i błyskawicznie.. </p>
+
+<a href="img/omnie3.jpg" data-lightbox="portfolio" data-title="Opis zdjęcia 1">
+        <div class="image-container">
+          <img src="img/omnie3.jpg" alt="Zdjęcie 1">
+          <div class="caption">Yeah, that's me.</div>
+        </div>
+      </a>
+<p> Sprawdź moje portfolio.. </p>
+    </section>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> Zainteresowałem Cię? Super, formularz kontaktowy jest poniżej. Czekam na Twoją wiadomość! </p>
+<p> Zróbmy razem jakiś fajny materiał! </p>
+
+<section id="kontakt" class="contact">
+  <h2>Formularz kontaktowy</h2>
+  <form id="contact-form">
+    <label for="name">Imię i nazwisko:</label>
+    <input type="text" id="name" name="name" required>
+
+    <label for="email">Adres e-mail:</label>
+    <input type="email" id="email" name="email" required>
+
+    <label for="temat">Temat:</label>
+    <select id="temat" name="temat" required>
+      <option value="">-- Wybierz temat --</option>
+      <option value="Współpraca">Współpraca</option>
+      <option value="Cennik">Cennik</option>
+      <option value="Inne">Inne</option>
+    </select>
+
+    <label for="wiadomosc">Wiadomość:</label>
+    <textarea id="wiadomosc" name="wiadomosc" rows="6" required></textarea>
+
+    <button type="submit">Wyślij</button>
+  </form>
+</section>
+
+
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+<script>
+  emailjs.init("K2hdH5tVvab23x7p6"); // Twój publiczny klucz
+
+  document.getElementById("contact-form").addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    const templateParams = {
+      name: document.getElementById("name").value,
+      email: document.getElementById("email").value,
+      temat: document.getElementById("temat").value,
+      wiadomosc: document.getElementById("wiadomosc").value
+    };
+
+    emailjs.send("service_wjq6fva", "template_pufbrmr", templateParams)
+      .then(function (response) {
+        alert("Wiadomość wysłana! Dziękuję za kontakt.");
+        document.getElementById("contact-form").reset();
+      }, function (error) {
+        console.error("Błąd przy wysyłce wiadomości:", error);
+        alert("Nie udało się wysłać wiadomości. Spróbuj ponownie.");
+      });
+  });
+</script>
+
+  <footer style="background-color: #000; color: #fff; text-align: center; padding: 15px 0; margin-top: 60px;">
+    BartFoto © 2025 – wszelkie prawa zastrzeżone
+  </footer>
+

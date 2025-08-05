@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Zdjęcia – Zamówienia | BartFoto</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f5f5f5;
+      color: #333;
+    }
+
+    header {
+      background-color: #000;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .logo-center img {
+      max-width: 120px;
+      margin-bottom: 10px;
+    }
+
+    nav {
+      background-color: #222;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      padding: 10px 0;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 15px;
+      font-weight: 600;
+      transition: color 0.3s ease;
+    }
+
+    nav a:hover {
+      color: #ccc;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+      padding: 40px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .photo-card {
+      background-color: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      overflow: hidden;
+      transition: transform 0.2s ease;
+    }
+
+    .photo-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .photo-card img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .photo-info {
+      padding: 16px;
+    }
+
+    .photo-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .photo-price {
+      color: #000;
+      font-weight: bold;
+      margin-top: 4px;
+    }
+
+    footer {
+      background-color: #222;
+      color: #fff;
+      text-align: center;
+      padding: 30px 20px;
+      margin-top: 60px;
+    }
+
+    footer h2 {
+      margin-bottom: 10px;
+    }
+
+    footer p {
+      margin: 4px 0;
+    }
+
+    /* Hamburger menu style */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      padding: 10px;
+    }
+
+    .bar {
+      height: 3px;
+      width: 25px;
+      background-color: white;
+      margin: 4px 0;
+      transition: 0.4s;
+    }
+
+    .mobile-nav {
+      display: none;
+      flex-direction: column;
+      background-color: #222;
+      padding: 10px 0;
+    }
+
+    .mobile-nav a {
+      padding: 10px 20px;
+      border-top: 1px solid #444;
+    }
+
+    @media (max-width: 768px) {
+      nav {
+        display: none;
+      }
+
+      .hamburger {
+        display: flex;
+        justify-content: flex-end;
+        background-color: #222;
+      }
+
+      .mobile-nav.show {
+        display: flex;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo-center">
+      <img src="img/logo.png" alt="Logo Bartosz Tyszko" />
+    </div>
+    <h1>Bartosz Tyszko</h1>
+    <p>Fotografia sportowa | motoryzacyjna | ślubna | wieczory panieńskie</p>
+  </header>
+
+  <!-- Hamburger Icon (Mobile only) -->
+  <div class="hamburger" onclick="toggleMobileMenu()">
+    <div class="bar"></div>
+    <div class="bar"></div>
+    <div class="bar"></div>
+  </div>
+
+  <!-- Desktop Navigation -->
+  <nav>
+    <a href="index.html">Strona Główna</a>
+    <a href="sport.html">Sport</a>
+    <a href="motoryzacja.html">Motoryzacja</a>
+    <a href="wieczory.html">Wieczory Panieńskie</a>
+    <a href="sluby.html">Śluby</a>
+    <a href="sprzedaz.html">Zdjęcia na sprzedaż</a>
+  </nav>
+
+  <!-- Mobile Navigation -->
+  <div class="mobile-nav" id="mobileNav">
+    <a href="index.html">Strona Główna</a>
+    <a href="sport.html">Sport</a>
+    <a href="motoryzacja.html">Motoryzacja</a>
+    <a href="wieczory.html">Wieczory Panieńskie</a>
+    <a href="sluby.html">Śluby</a>
+    <a href="sprzedaz.html">Zdjęcia na sprzedaż</a>
+  </div>
+
+  <section class="gallery">
+    <div class="photo-card">
+      <img src="img/chodyna1.jpg" alt="1">
+      <div class="photo-info">
+        <div class="photo-title">Kacper Chodyna vs. Arka Gdynia</div>
+        <div class="photo-price">Cena: 180 PLN (format A3)</div>
+      </div>
+    </div>
+
+    <div class="photo-card">
+      <img src="img/kapustka1.jpg" alt="2">
+      <div class="photo-info">
+        <div class="photo-title">Bartosz Kapustka vs Banik Ostrava</div>
+        <div class="photo-price">Cena: 200 PLN (format A3)</div>
+      </div>
+    </div>
+
+    <div class="photo-card">
+      <img src="img/reca1.jpg" alt="3">
+      <div class="photo-info">
+        <div class="photo-title">Arkadiusz Reca – debiut w barwach Legii Warszawa</div>
+        <div class="photo-price">Cena: 200 PLN (format A3)</div>
+      </div>
+    </div>
+
+    <div class="photo-card">
+      <img src="img/legia1.jpg" alt="4">
+      <div class="photo-info">
+        <div class="photo-title">Żyleta</div>
+        <div class="photo-price">Cena: 200 PLN (format A3)</div>
+      </div>
+    </div>
+
+    <div class="photo-card">
+      <img src="img/cristiano1.jpg" alt="5">
+      <div class="photo-info">
+        <div class="photo-title">Cristiano Ronaldo w Warszawie</div>
+        <div class="photo-price">Cena: 450 PLN (format A2)</div>
+        <div class="photo-price">Cena: 350 PLN (format A3)</div>
+      </div>
+    </div>
+
+    <div class="photo-card">
+      <img src="img/cristiano2.jpg" alt="6">
+      <div class="photo-info">
+        <div class="photo-title">Cristiano Ronaldo w Warszawie</div>
+        <div class="photo-price">Cena: 450 PLN (format A2)</div>
+        <div class="photo-price">Cena: 350 PLN (format A3)</div>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding: 0 40px; max-width: 800px; margin: auto;">
+    <p>Do każdego zamówienia należy doliczyć kwotę wysyłki pomiędzy 20 a 30 PLN. Wysyłka: paczkomat/kurier InPost.</p>
+    <hr />
+    <p>Jeśli jesteś zainteresowany zamówieniem obrazu, proszę o kontakt drogą mailową z następującymi informacjami:</p>
+    <ul>
+      <li>Imię i nazwisko osoby zamawiającej</li>
+      <li><strong>Adres domowy do wysyłki lub numer Paczkomatu</strong></li>
+      <li>Akceptowalne formy płatności: przelew na telefon BLIK, gotówka (tylko przy odbiorze osobistym)</li>
+    </ul>
+  </section>
+
+  <footer>
+    <h2>Kontakt / Zamówienia</h2>
+    <p><strong>Bartosz Tyszko – BartFoto</strong></p>
+    <p>📧 Email: <a href="mailto:bartosztyszko.fotografia@gmail.com" style="color: #fff;">bartosztyszko.fotografia@gmail.com</a></p>
+    <p>📱 Telefon: +48 570 777 365</p>
+    <p>📍 Warszawa</p>
+  </footer>
+
+  <script>
+    function toggleMobileMenu() {
+      const menu = document.getElementById("mobileNav");
+      menu.classList.toggle("show");
+    }
+  </script>
+</body>
+</html>

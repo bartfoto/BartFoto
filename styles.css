@@ -105,7 +105,7 @@ nav a:hover {
 
 .lead {
   font-size: 16px;
-  color: #FFFFFF;
+  color: #808080;
 }
 
 /* ==============================
@@ -360,4 +360,5 @@ nav a:hover {
   width: auto;
   box-shadow: 0 4px 20px rgba(0,0,0,0.5);
 }
+
 

@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>BartFoto — Koncerty</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="container">
+    <header>
+      <a class="site-brand" href="index.html">
+        <div class="brand-logo">BF</div>
+        <div>
+          <div style="font-weight:700">BartFoto</div>
+          <div style="font-size:12px;color:var(--muted)">Koncerty</div>
+        </div>
+      </a>
+      <nav>
+        <ul>
+          <li><a href="index.html">O mnie</a></li>
+          <li><a href="sport.html">Sport</a></li>
+          <li><a href="wieczory_pann.html">Wieczory panieńskie</a></li>
+          <li><a href="sluby.html">Śluby</a></li>
+          <li><a href="chrzciny.html">Chrzciny</a></li>  
+          <li><a href="sesje_narzeczenskie.html">Sesje narzeczeńskie</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <h1 style="margin-top:8px">Koncerty</h1>
+      <section class="intro-text">
+  <p>Fotografia koncertowa - jest to dla mnie nadal nowość, którą z każdym kolejnym koncertem odkrywam z większą radością. Energia publiczności i samych artystów na scenie daje pozytywne bodźce, które odwzorowuję swoimi zdjęciami - ale też zostają ze mną.</p>
+      <div class="gallery">
+        <div class="card" data-src="images/koncerty/koncert1.jpg" data-caption="Flo Rida w Łodzi - 08/10/2025">
+          <img src="images/koncerty/koncert1.jpg" alt="koncert1"/>
+          <div class="caption">Flo Rida w Łodzi - 08/10/2025</div>
+        </div>
+        <div class="card" data-src="images/koncerty/koncert2.jpg" data-caption="Flo Rida w Łodzi - 08/10/2025">
+          <img src="images/koncerty/koncert2.jpg" alt="koncert2"/>
+          <div class="caption">Flo Rida w Łodzi - 08/10/2025</div>
+        </div>
+        <div class="card" data-src="images/koncerty/koncert3.jpg" data-caption="Wokalistka - moment kulminacyjny">
+          <img src="images/koncerty/koncert3.jpg" alt="koncert3"/>
+          <div class="caption">Flo Rida w Łodzi - 08/10/2025</div>
+        </div>
+        <div class="card" data-src="images/koncerty/koncert4.jpg" data-caption="Nagły Atak Spawacza - Warszawa">
+          <img src="images/koncerty/koncert4.jpg" alt="koncert1"/>
+          <div class="caption">Małpa - Nagły Atak Spawacza - Warszawa</div>
+        </div>
+        <div class="card" data-src="images/koncerty/koncert5.jpg" data-caption="Nagły Atak Spawacza - Warszawa">
+          <img src="images/koncerty/koncert5.jpg" alt="koncert2"/>
+          <div class="caption">Nagły Atak Spawacza - Warszawa</div>
+        </div>
+        <div class="card" data-src="images/koncerty/koncert6.jpg" data-caption="Nagły Atak Spawacza - Warszawa">
+          <img src="images/koncerty/koncert6.jpg" alt="koncert3"/>
+          <div class="caption">Kaczmi - Nagły Atak Spawacza - Warszawa</div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div style="color:var(--muted)">Kontakt: <span style="color:var(--accent)">bartosztyszko.fotografia@gmail.com</span></div>
+      <div style="color:var(--muted)">BartFoto - Wszelkie prawa zastrzeżone</div>
+    </footer>
+  </div>
+
+  <div class="lightbox-overlay" id="lightbox">
+    <div class="lightbox-backdrop" id="lightbox-backdrop"></div>
+    <div class="lightbox-content" role="dialog" aria-modal="true">
+      <img id="lightbox-img" src="" alt="podgląd" />
+      <div class="lightbox-caption" id="lightbox-caption"></div>
+    </div>
+  </div>
+
+  <script>
+    (function(){
+      const cards = document.querySelectorAll('.card[data-src]');
+      const overlay = document.getElementById('lightbox');
+      const backdrop = document.getElementById('lightbox-backdrop');
+      const img = document.getElementById('lightbox-img');
+      const caption = document.getElementById('lightbox-caption');
+
+      function open(src, cap){
+        img.src = src;
+        caption.textContent = cap || '';
+        overlay.classList.add('visible');
+        document.body.style.overflow = 'hidden';
+      }
+      function close(){
+        overlay.classList.remove('visible');
+        img.src = '';
+        caption.textContent = '';
+        document.body.style.overflow = '';
+      }
+
+      cards.forEach(c=>{
+        c.addEventListener('click', ()=> open(c.dataset.src, c.dataset.caption));
+      });
+
+      backdrop.addEventListener('click', close);
+      overlay.addEventListener('click', (e)=>{ if(e.target === overlay) close(); });
+      document.addEventListener('keydown', (e)=>{ if(e.key === 'Escape') close(); });
+    })();
+  </script>
+</body>
+</html>

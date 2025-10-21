@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>BartFoto — Sport</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="container">
+    <header>
+      <a class="site-brand" href="index.html">
+        <div class="brand-logo">BF</div>
+        <div>
+          <div style="font-weight:700">BartFoto</div>
+          <div style="font-size:12px;color:var(--muted)">Sport</div>
+        </div>
+      </a>
+      <nav>
+        <ul>
+          <li><a href="index.html">O mnie</a></li>
+          <li><a href="koncerty.html">Koncerty</a></li>
+          <li><a href="chrzciny.html">Chrzciny</a></li> 
+          <li><a href="wieczory_pann.html">Wieczory panieńskie</a></li>
+          <li><a href="sluby.html">Śluby</a></li>
+          <li><a href="sesje_narzeczenskie.html">Sesje narzeczeńskie</a></li>
+          <li><a href="rozne_inne.html">Różne inne</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <h1 style="margin-top:8px">Sport</h1>
+      <p style="color:var(--muted)">Galeria sportowa — dynamiczne ujęcia, ostre momenty i emocje stadionów.</p>
+
+      <section class="intro-text">
+        <p>
+          Fotografia sportowa to dla mnie połączenie dynamiki, emocji i chwili.
+          Staram się uchwycić nie tylko samą akcję, ale też napięcie i pasję zawodników —
+          te krótkie momenty, które decydują o wszystkim. Jednocześnie spełniam swoje marzenie
+          o zwiedzaniu stadionów piłkarskich.
+        </p>
+      </section>
+
+      <!-- GALERIA ZDJĘĆ -->
+      <section style="margin-top:30px">
+        <div class="gallery">
+          <div class="card" data-src="images/sport/1.jpg" data-caption="AZS AWF Warszawa - walka do samego końca">
+            <img src="images/sport/1.jpg" alt="sport1" />
+            <div class="caption">AZS AWF Warszawa - walka do samego końca</div>
+          </div>
+
+          <div class="card" data-src="images/sport/2.jpg" data-caption="AZS AWF Warszawa - sekcja damska">
+            <img src="images/sport/2.jpg" alt="sport2" />
+            <div class="caption">AZS AWF Warszawa - sekcja damska</div>
+          </div>
+
+          <div class="card" data-src="images/sport/3.jpg" data-caption="Broń Radom - Legia II Warszawa">
+            <img src="images/sport/3.jpg" alt="sport3" />
+            <div class="caption">Broń Radom - Legia II Warszawa</div>
+          </div>
+
+          <div class="card" data-src="images/sport/4.jpg" data-caption="Legia Warszawa - Radomiak Radom">
+            <img src="images/sport/4.jpg" alt="sport4" />
+            <div class="caption">Legia Warszawa - Radomiak Radom</div>
+          </div>
+
+          <div class="card" data-src="images/sport/5.jpg" data-caption="47. Nationale Nederlanden Maraton Warszawski">
+            <img src="images/sport/5.jpg" alt="sport5" />
+            <div class="caption">47. Nationale Nederlanden Maraton Warszawski</div>
+          </div>
+
+          <div class="card" data-src="images/sport/6.jpg" data-caption="47. Nationale Nederlanden Maraton Warszawski">
+            <img src="images/sport/6.jpg" alt="sport6" />
+            <div class="caption">47. Nationale Nederlanden Maraton Warszawski</div>
+          </div>
+
+          <div class="card" data-src="images/sport/7.jpg" data-caption="Biegnij Warszawo">
+            <img src="images/sport/7.jpg" alt="sport7" />
+            <div class="caption">Biegnij Warszawo</div>
+          </div>
+
+          <div class="card" data-src="images/sport/8.jpg" data-caption="Biegnij Warszawo">
+            <img src="images/sport/8.jpg" alt="sport8" />
+            <div class="caption">Biegnij Warszawo</div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div style="color:var(--muted)">
+        Kontakt: <span style="color:var(--accent)">bartosztyszko.fotografia@gmail.com</span>
+      </div>
+      <div style="color:var(--muted)">BartFoto - Wszelkie prawa zastrzeżone</div>
+    </footer>
+  </div>
+
+  <!-- lightbox -->
+  <div class="lightbox-overlay" id="lightbox">
+    <div class="lightbox-backdrop" id="lightbox-backdrop"></div>
+    <div class="lightbox-content" role="dialog" aria-modal="true">
+      <img id="lightbox-img" src="" alt="podgląd" />
+      <div class="lightbox-caption" id="lightbox-caption"></div>
+    </div>
+  </div>
+
+  <script>
+    (function(){
+      const cards = document.querySelectorAll('.card[data-src]');
+      const overlay = document.getElementById('lightbox');
+      const backdrop = document.getElementById('lightbox-backdrop');
+      const img = document.getElementById('lightbox-img');
+      const caption = document.getElementById('lightbox-caption');
+
+      function open(src, cap){
+        img.src = src;
+        caption.textContent = cap || '';
+        overlay.classList.add('visible');
+        document.body.style.overflow = 'hidden';
+      }
+      function close(){
+        overlay.classList.remove('visible');
+        img.src = '';
+        caption.textContent = '';
+        document.body.style.overflow = '';
+      }
+
+      cards.forEach(c=>{
+        c.addEventListener('click', ()=> open(c.dataset.src, c.dataset.caption));
+      });
+
+      backdrop.addEventListener('click', close);
+      overlay.addEventListener('click', (e)=>{ if(e.target === overlay) close(); });
+      document.addEventListener('keydown', (e)=>{ if(e.key === 'Escape') close(); });
+    })();
+  </script>
+</body>
+</html>

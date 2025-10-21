@@ -361,6 +361,38 @@ nav a:hover {
   width: auto;
   box-shadow: 0 4px 20px rgba(0,0,0,0.5);
 }
+.footer {
+  position: relative;
+  overflow: hidden;
+  height: 200px; /* dostosuj wysokość stopki */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.footer-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.3) contrast(1.1);
+  z-index: 0;
+}
+
+.footer-overlay {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+}
+
+.footer-content {
+  color: white;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
 
 
 

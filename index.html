@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>BartFoto — O mnie</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="container">
+    <header>
+      <a class="site-brand" href="index.html">
+        <div class="brand-logo">BF</div>
+        <div>
+          <div style="font-weight:700">BartFoto</div>
+          <div style="font-size:12px;color:var(--muted)">Fotografia • Portfolio</div>
+        </div>
+      </a>
+
+      <nav>
+        <ul>
+          <li><a href="sport.html">Sport</a></li>
+          <li><a href="koncerty.html">Koncerty</a></li>
+          <li><a href="wieczory_pann.html">Wieczory panieńskie</a></li>
+          <li><a href="sluby.html">Śluby</a></li>
+          <li><a href="chrzciny.html">Chrzciny</a></li>  
+          <li><a href="sesje_narzeczenskie.html">Sesje narzeczeńskie</a></li>
+          <li><a href="rozne_inne.html">Różne inne</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- HERO SECTION z wideo w tle -->
+    <section class="hero hero-video">
+      <video autoplay muted loop playsinline class="hero-bg">
+        <source src="02.mp4" type="video/mp4">
+        Twoja przeglądarka nie obsługuje wideo w tle.
+      </video>
+
+      <div class="hero-content">
+        <div class="portrait">
+          <img src="glowna/portrait-vertical.jpg" alt="Bartosz - fotograf" />
+        </div>
+
+        <div class="about">
+          <h1 class="title">Cześć — jestem Bartosz</h1>
+          <p class="lead">
+            Fotografuję emocje, ruch i momenty — od dynamicznych wydarzeń sportowych,
+            przez energetyczne koncerty, po intymne chwile podczas ślubów i sesji narzeczeńskich.
+            Moje zdjęcia opierają się na kontrastach, naturalnym świetle i autentyczności.
+          </p>
+          <p style="color:#FFFFFF;margin-top:12px">
+            Jeżeli chcesz zobaczyć konkretne realizacje — wybierz kategorię z menu powyżej.
+          </p>
+
+          <div class="music-widget" style="margin-top:16px;">
+            <p style="font-size:14px; color:#FFFFFF; margin-bottom:6px;">
+              🎧 Włącz sobie muzyczkę dla lepszego odbioru:
+            </p>
+            <audio controls loop style="width:100%; max-width:300px;">
+              <source src="music/ambient.mp3" type="audio/mpeg">
+              Twoja przeglądarka nie obsługuje elementu audio.
+            </audio>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- GALERIA -->
+    <main>
+      <section style="margin-top:26px">
+        <h2 style="margin:0 0 14px 0">Kilka ostatnich zdjęć</h2>
+        <div class="gallery">
+          <div class="card" data-src="glowna/1.jpg" data-caption="Cristiano Ronaldo - Stadion Narodowy">
+            <img alt="sport1" src="glowna/1.jpg" />
+            <div class="caption">Cristiano Ronaldo - Stadion Narodowy</div>
+          </div>
+          <div class="card" data-src="glowna/2.jpg" data-caption="Małpa - Nagły Atak Spawacza">
+            <img alt="koncert1" src="glowna/2.jpg" />
+            <div class="caption">Małpa - Nagły Atak Spawacza</div>
+          </div>
+          <div class="card" data-src="glowna/3.jpg" data-caption="BMW E30 w centrum Warszawy">
+            <img alt="wieczor1" src="glowna/3.jpg" />
+            <div class="caption">BMW E30</div>
+          </div>
+          <div class="card" data-src="glowna/4.jpg" data-caption="PGE Narodowy">
+            <img alt="slub1" src="glowna/4.jpg" />
+            <div class="caption">PGE Narodowy</div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Sekcja Zaufali mi -->
+    <section class="trusted-by">
+      <h2>Zaufali mi</h2>
+      <p class="trusted-sub">Z markami i drużynami, z którymi miałem przyjemność współpracować</p>
+      <div class="logos">
+        <div class="logo-item"><img src="glowna/logos/Poloniawarszawa1.png" alt="Polonia Warszawa" /></div>
+        <div class="logo-item"><img src="glowna/logos/hutnikwarszawa2.png" alt="Hutnik Warszawa" /></div>
+        <div class="logo-item"><img src="glowna/logos/dzikiwarszawa3.png" alt="Dziki Warszawa" /></div>
+        <div class="logo-item"><img src="glowna/logos/azsawfwarszawa4.png" alt="AZS AWF Warszawa" /></div>
+        <div class="logo-item"><img src="glowna/logos/images.jpg" alt="ASZ UW sekcja Futsal" /></div>
+        <div class="logo-item"><img src="glowna/logos/images (1).jpg" alt="Varsovia Warszawa" /></div>
+        <div class="logo-item"><img src="glowna/logos/legiafutsal7.png" alt="Legia Futsal" /></div>
+	<div class="logo-item"><img src="glowna/logos/images2.jpg" alt="Nagły Atak Spawacza" /></div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div style="color:var(--muted)">
+        Kontakt: <span style="color:var(--accent)">bartosztyszko.fotografia@gmail.com</span>
+      </div>
+      <div style="color:var(--muted)">BartFoto — Wszelkie prawa zastrzeżone</div>
+    </footer>
+  </div>
+
+  <!-- LIGHTBOX -->
+  <div class="lightbox-overlay" id="lightbox">
+    <div class="lightbox-backdrop" id="lightbox-backdrop"></div>
+    <div class="lightbox-content" role="dialog" aria-modal="true">
+      <img id="lightbox-img" src="" alt="podgląd" />
+      <div class="lightbox-caption" id="lightbox-caption"></div>
+    </div>
+  </div>
+
+  <script>
+    (function(){
+      const cards = document.querySelectorAll('.card[data-src]');
+      const overlay = document.getElementById('lightbox');
+      const backdrop = document.getElementById('lightbox-backdrop');
+      const img = document.getElementById('lightbox-img');
+      const caption = document.getElementById('lightbox-caption');
+
+      function open(src, cap){
+        img.src = src;
+        caption.textContent = cap || '';
+        overlay.classList.add('visible');
+        document.body.style.overflow = 'hidden';
+      }
+      function close(){
+        overlay.classList.remove('visible');
+        img.src = '';
+        caption.textContent = '';
+        document.body.style.overflow = '';
+      }
+
+      cards.forEach(c=>{
+        c.addEventListener('click', ()=> open(c.dataset.src, c.dataset.caption));
+      });
+
+      backdrop.addEventListener('click', close);
+      overlay.addEventListener('click', (e)=>{ if(e.target === overlay) close(); });
+      document.addEventListener('keydown', (e)=>{ if(e.key === 'Escape') close(); });
+    })();
+  </script>
+</body>
+</html>

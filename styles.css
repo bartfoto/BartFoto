@@ -4,8 +4,8 @@
 :root {
   --bg: #fff;
   --text: #111;
-  --muted: #808080;
-  --accent: #808080;
+  --muted: #000000;
+  --accent: #000000;
   --border: #e0e0e0;
   --overlay-bg: rgba(0, 0, 0, 0.8);
 }
@@ -361,6 +361,7 @@ nav a:hover {
   width: auto;
   box-shadow: 0 4px 20px rgba(0,0,0,0.5);
 }
+
 
 
 

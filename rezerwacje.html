@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rezerwacje | BartFoto</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    /* ===== Dodatkowe style dla podstrony rezerwacji ===== */
+
+    .booking {
+      max-width: 700px;
+      margin: 60px auto;
+      text-align: center;
+    }
+
+    .booking h1 {
+      font-size: 28px;
+      margin-bottom: 8px;
+    }
+
+    .booking p {
+      color: var(--muted);
+      margin-bottom: 30px;
+    }
+
+    /* Kalendarz */
+    .calendar {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 6px;
+      margin-bottom: 20px;
+      user-select: none;
+    }
+
+    .calendar div {
+      padding: 12px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .calendar div:hover {
+      background: var(--accent);
+      color: #fff;
+    }
+
+    .calendar .selected {
+      background: var(--text);
+      color: #fff;
+      font-weight: 600;
+    }
+
+    /* Formularz */
+    .booking-form {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      margin-top: 30px;
+      text-align: left;
+    }
+
+    .booking-form label {
+      font-weight: 500;
+      margin-bottom: 4px;
+    }
+
+    .booking-form input,
+    .booking-form textarea,
+    .booking-form select {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      font-size: 15px;
+      font-family: inherit;
+    }
+
+    .booking-form textarea {
+      min-height: 100px;
+      resize: vertical;
+    }
+
+    .booking-form button {
+      background: var(--text);
+      color: #fff;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.3s ease;
+      margin-top: 10px;
+    }
+
+    .booking-form button:hover {
+      background: var(--muted);
+    }
+
+    .success-message,
+    .error-message {
+      display: none;
+      margin-top: 20px;
+      font-weight: 600;
+      text-align: center;
+    }
+
+    .success-message { color: green; }
+    .error-message { color: crimson; }
+  </style>
+</head>
+
+<body>
+  <header class="container">
+    <a href="index.html" class="site-brand">
+      <div class="brand-logo">BF</div>
+      <span>BartFoto</span>
+    </a>
+    <nav>
+      <ul>
+        <li><a href="index.html">Strona główna</a></li>
+        <li><a href="rezerwacje.html" style="color: var(--muted);">Rezerwacje</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="container booking">
+    <h1>Zarezerwuj termin sesji</h1>
+    <p>Wybierz dogodny termin i wypełnij formularz, a skontaktuję się z Tobą, by potwierdzić szczegóły.</p>
+
+    <div id="calendar" class="calendar"></div>
+
+    <form id="bookingForm" class="booking-form" action="https://formspree.io/f/mblpwkav" method="POST">
+      <label for="name">Imię i nazwisko</label>
+      <input type="text" id="name" name="Imię i nazwisko" required />
+
+      <label for="email">Adres e-mail</label>
+      <input type="email" id="email" name="Email" required />
+
+      <label for="phone">Telefon</label>
+      <input type="tel" id="phone" name="Telefon" />
+
+      <label for="date">Wybrana data</label>
+      <input type="text" id="date" name="Data" readonly required />
+
+      <label for="time">Godzina</label>
+      <select id="time" name="Godzina" required>
+        <option value="">-- wybierz godzinę --</option>
+        <option>09:00</option>
+        <option>10:30</option>
+        <option>12:00</option>
+        <option>14:00</option>
+        <option>16:00</option>
+        <option>18:00</option>
+      </select>
+
+      <label for="message">Wiadomość (opcjonalnie)</label>
+      <textarea id="message" name="Wiadomość" placeholder="np. sesja rodzinna, plenerowa itp."></textarea>
+
+      <button type="submit">Wyślij rezerwację</button>
+      <div class="success-message" id="successMessage">✅ Dziękuję! Twoja rezerwacja została wysłana.</div>
+      <div class="error-message" id="errorMessage">❌ Coś poszło nie tak. Spróbuj ponownie.</div>
+    </form>
+  </main>
+
+  <footer class="footer">
+    <p>&copy; 2025 BartFoto. Wszystkie prawa zastrzeżone.</p>
+  </footer>
+
+  <script>
+    // ====== Kalendarz ======
+    const calendar = document.getElementById("calendar");
+    const dateInput = document.getElementById("date");
+    const today = new Date();
+
+    function generateCalendar(year, month) {
+      calendar.innerHTML = "";
+      const firstDay = new Date(year, month, 1).getDay();
+      const daysInMonth = new Date(year, month + 1, 0).getDate();
+
+      const weekdays = ["Nd", "Pn", "Wt", "Śr", "Cz", "Pt", "So"];
+      weekdays.forEach(day => {
+        const el = document.createElement("div");
+        el.style.fontWeight = "600";
+        el.textContent = day;
+        el.style.border = "none";
+        el.style.background = "transparent";
+        calendar.appendChild(el);
+      });
+
+      for (let i = 0; i < (firstDay || 7) - 1; i++) {
+        const empty = document.createElement("div");
+        empty.style.border = "none";
+        calendar.appendChild(empty);
+      }
+
+      for (let day = 1; day <= daysInMonth; day++) {
+        const cell = document.createElement("div");
+        const currentDate = new Date(year, month, day);
+        cell.textContent = day;
+
+        if (currentDate < new Date(today.getFullYear(), today.getMonth(), today.getDate())) {
+          cell.style.opacity = "0.3";
+          cell.style.pointerEvents = "none";
+        }
+
+        cell.addEventListener("click", () => {
+          document.querySelectorAll(".calendar .selected").forEach(el => el.classList.remove("selected"));
+          cell.classList.add("selected");
+          dateInput.value = `${day.toString().padStart(2, "0")}.${(month + 1).toString().padStart(2, "0")}.${year}`;
+        });
+
+        calendar.appendChild(cell);
+      }
+    }
+
+    generateCalendar(today.getFullYear(), today.getMonth());
+
+    // ====== Formularz z Formspree ======
+    const form = document.getElementById("bookingForm");
+    const successMessage = document.getElementById("successMessage");
+    const errorMessage = document.getElementById("errorMessage");
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      successMessage.style.display = "none";
+      errorMessage.style.display = "none";
+
+      const formData = new FormData(form);
+      try {
+        const response = await fetch(form.action, {
+          method: "POST",
+          body: formData,
+          headers: { 'Accept': 'application/json' }
+        });
+        if (response.ok) {
+          successMessage.style.display = "block";
+          form.reset();
+          document.querySelectorAll(".calendar .selected").forEach(el => el.classList.remove("selected"));
+        } else {
+          errorMessage.style.display = "block";
+        }
+      } catch (err) {
+        errorMessage.style.display = "block";
+      }
+    });
+  </script>
+</body>
+</html>
